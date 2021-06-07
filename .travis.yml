@@ -1,0 +1,33 @@
+jobs:
+  include:
+    - stage: Test py37
+      language: python
+      python: 3.7
+      install: pip install tox-travis
+      script: tox -e py37
+    - stage: Test py38
+      language: python
+      python: 3.8
+      install: pip install tox-travis
+      script: tox -e py38
+    - stage: Test py39, coverage, deploy
+      language: python
+      python: 3.9
+      install: pip install tox-travis pytest coverage
+      script:
+        - tox -e py39
+        - coverage run -m pytest
+      after_success: bash <(curl -s https://codecov.io/bash)
+      deploy:
+        provider: pypi
+        distributions: sdist bdist_wheel
+        user: __token__
+        password:
+          secure: U7kmvIK4FbvippewsbVqn9V9crAZj2st0/EircSO/j3/VWd6hr/uR7bYSfTS14PathVAIIwbqyGUSzXmovd9+rLY6Yc25qgWP+27xrM/Py1sSjsqdpUADqxNQGivaqWZmCW2483JkKRJjva1ZeJPihkgw+V8wPF9upbNKQE6NluXBFSxtiaWN5t05SUSPlYJDBTYpaFUSOC6ENujZvl7cBQwrfIA4gLa9xopnXofIlJq5xPIG0J3GwJ9Njh9lbajeOKYId9yXnZUddlenvpQF1xZCJaYKRJDbk/kRWD5/itjtJTYzuJnnJ+5XatXtNfs7RGsMiFj+sVvo8uDsWGEnZMh2OMe+nEv0CTVDmngDyfDEor1dqzQxH6loobKiwssIiLG9mDr9w/cRBTjIDPhKmVvfLSUBS/PdDwyQIeb7niEtyb60BRjNzgLs1GX+EJB+Td711SLBQpC2a6+89Xw58YnTAkW7/5On3E2l5TGvaKI676+Gw0OQyaJGeeAYX+9TcJ5e2/olAjpJmvqz2ji+EPQZqOpj9KfVdafYLrZN8QRDqKoEAquHMaVXN03shpZTbC+ASfsd6WRtrazi/5YSxk8zRz/eRrj8yM9O6uw6j5xcOpAh27LQx0K1SSRdtXBL1pLxWxnVCqWJuzjday6qZqC1+smi3NWTlzkBCCS7u4=
+        on:
+          tags: true
+          repo: hanifbirgani/codemelli
+          python: 3.9
+branches:
+  only:
+  - main
