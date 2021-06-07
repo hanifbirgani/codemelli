@@ -30,4 +30,5 @@ jobs:
           python: 3.9
 branches:
   only:
-  - main
+    - main
+    - /^v\d+\.\d+(\.\d)?$/
