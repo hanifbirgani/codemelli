@@ -2,7 +2,7 @@ CodeMelli
 =========
 
 [![pypi version](https://img.shields.io/pypi/v/codemelli.svg)](https://pypi.python.org/pypi/codemelli)
-[![build status](https://img.shields.io/travis/hanifbirgani/codemelli.svg)](https://travis-ci.com/hanifbirgani/codemelli)
+[![build status](https://travis-ci.com/hanifbirgani/codemelli.svg?branch=main)](https://travis-ci.com/hanifbirgani/codemelli)
 [![docs](https://readthedocs.org/projects/codemelli/badge/?version=latest)](https://codemelli.readthedocs.io/en/latest/?version=latest)
 [![code coverage](https://codecov.io/gh/HanifBirgani/codemelli/branch/main/graph/badge.svg?token=NXI0SUQJ0N)](https://codecov.io/gh/HanifBirgani/codemelli)
 ![Python versions](https://img.shields.io/pypi/pyversions/codemelli)
